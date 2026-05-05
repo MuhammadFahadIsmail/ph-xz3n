@@ -11,13 +11,12 @@ const deployTarget = process.env.DEPLOY_TARGET ?? "cloudflare";
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
 
 export default defineConfig({
-    // GitHub Pages needs a repo subpath; Vercel/Cloudflare should use root.
-    base: isGitHubPages ? "/ph-xz3n/" : "/",
-
     // Keep Cloudflare plugin only for Cloudflare-targeted builds.
     cloudflare: deployTarget === "cloudflare" ? {} : false,
 
     vite: {
+        // GitHub Pages needs a repo subpath; Vercel/Cloudflare should use root.
+        base: isGitHubPages ? "/ph-xz3n/" : "/",
         // Nitro enables Vercel/Node deployment output for TanStack Start.
         plugins: deployTarget === "vercel" ? [nitro({ preset: "vercel" })] : [],
     },
