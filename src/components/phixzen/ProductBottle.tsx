@@ -7,8 +7,8 @@ const sizeConfig = {
   hero: {
     wrapper: "h-[360px] w-[260px]",
     imageHeight: "h-[330px]",
-    aquaScale: 1.47,
-    smoothScale: 1.35,
+    aquaScale: 1.34,
+    smoothScale: 1.25,
     aquaY: "-13px",
     smoothY: "-12px",
     shadow: "bottom-2 h-6 w-40",
