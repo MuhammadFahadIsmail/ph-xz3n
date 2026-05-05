@@ -10,6 +10,12 @@ const quick = [
   { label: "Contact", href: "#contact" },
 ];
 
+const socialLinks = [
+  { Icon: Instagram, href: "https://www.instagram.com/phix.zen", label: "Instagram" },
+  { Icon: Facebook, href: "#", label: "Facebook" },
+  { Icon: Twitter, href: "#", label: "Twitter" },
+];
+
 export function Footer() {
   return (
     <footer className="border-t border-border bg-primary text-primary-foreground">
@@ -27,11 +33,13 @@ export function Footer() {
             calm convenience.
           </p>
           <div className="mt-6 flex gap-3">
-            {[Instagram, Facebook, Twitter].map((Icon, i) => (
+            {socialLinks.map(({ Icon, href, label }, i) => (
               <a
                 key={i}
-                href="#"
-                aria-label="Social link"
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-primary-foreground/20 transition-colors hover:bg-gold hover:text-gold-foreground"
               >
                 <Icon className="h-4 w-4" />
