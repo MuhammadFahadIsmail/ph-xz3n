@@ -5,8 +5,20 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { nitro } from "nitro/vite";
+
+const deployTarget = process.env.DEPLOY_TARGET ?? "cloudflare";
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
 
 export default defineConfig({
-    base : "/ph-xz3n"
-})
-;
+    // GitHub Pages needs a repo subpath; Vercel/Cloudflare should use root.
+    base: isGitHubPages ? "/ph-xz3n/" : "/",
+
+    // Keep Cloudflare plugin only for Cloudflare-targeted builds.
+    cloudflare: deployTarget === "cloudflare" ? {} : false,
+
+    vite: {
+        // Nitro enables Vercel/Node deployment output for TanStack Start.
+        plugins: deployTarget === "vercel" ? [nitro({ preset: "vercel" })] : [],
+    },
+});
