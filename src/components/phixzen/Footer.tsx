@@ -1,4 +1,4 @@
-import { Sparkles, Instagram, MessageCircle, Twitter } from "lucide-react";
+import { Sparkles, Instagram, MessageCircle } from "lucide-react";
 import phixzenLogo from "../../assets/phixzen-logo.png";
 
 const quick = [
@@ -13,7 +13,7 @@ const quick = [
 const socialLinks = [
   { Icon: Instagram, href: "https://www.instagram.com/phix.zen", label: "Instagram" },
   { Icon: MessageCircle, href: "https://wa.me/923477450917", label: "WhatsApp" },
-  { Icon: Twitter, href: "#", label: "Twitter" },
+  // { Icon: Twitter, href: "#", label: "Twitter" },
 ];
 
 export function Footer() {
